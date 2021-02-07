@@ -9,6 +9,7 @@ git clone https://github.com/Filipponik/rb1-test-task.git
 2. Создать БД в MySQL
 3. Импортировать [скрипт базы данных sql.sql](sql.sql)
 3. Настроить подключение RedBeanPHP к БД в [config.php](config.php) по [этой инструкции](https://www.redbeanphp.com/index.php?p=/connection)
+1. В файле `script.js` необходимо изменить ссылку, по которой будет происходить запрос
 
 ## Использование
 1. Подключаем `script.js` на нужную страницу
