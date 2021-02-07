@@ -20,6 +20,7 @@ git clone https://github.com/Filipponik/rb1-test-task.git
 и [здесь (серверная часть)](http://filipponik.tk/)
 
 P.S. Использовать для запросов чистый JS мне не особо понравилось :)
+
 P.P.S [Здесь](http://filipponik.tk/page/?path=8) смотреть удобно, остальное для показа корректной работы с базой и пагинацией 
 
 Схема базы данных:
