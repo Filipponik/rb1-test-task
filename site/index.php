@@ -18,6 +18,11 @@ $pathes_on_page = R::getAll('SELECT `sitepage`.`id`, `sitepage`.`url` FROM `site
 <div class="container pt-24 px-5 mx-auto flex flex-wrap">
 <h2 class="sm:text-3xl text-2xl text-gray-900 font-medium title-font mb-2 md:w-2/5">Выберите страницу сайта:</h2>
 </div>
+<?if (!$pathes_on_page || empty($pathes_on_page)) {?>
+<h2 class="sm:text-3xl pt-24 px-5 mx-auto text-2xl text-gray-900 font-medium title-font mb-2 md:w-2/5">К сожалению, страницы не найдены<br> <a href="/" class="sm:text-2xl text-xl text-gray-900 font-medium title-font mb-2 md:w-2/5">Вернуться назад</a></h2><br>
+
+
+<?}?>
 <div class="container px-5 py-10 mx-auto flex flex-wrap">
   <div class="flex flex-wrap -m-4">
 	<?foreach ($pathes_on_page as $path) {?>

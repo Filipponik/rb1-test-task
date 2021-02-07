@@ -1,5 +1,31 @@
 <?
 define('ELEMENTS_ON_PAGE', 2);
+define('DAY', 60*60*24);
+
+$statistic_dates = array(
+  'yesterday' => array(
+    'start' => strtotime("yesterday") - DAY,
+    'end' => strtotime("yesterday"),
+    'description' => 'Кликов за вчера'
+  ),
+  'today' => array(
+    'start' => strtotime("today") - DAY,
+    'end' => strtotime("today"),
+    'description' => 'Кликов за сегодня'
+  ),
+  'last_7_days' => array(
+    'start' => strtotime('last '.date('D')),
+    'end' => mktime(),
+    'description' => 'Кликов за последнюю неделю'
+  ),
+  'last_30_days' => array(
+    'start' => mktime()- DAY * 30,
+    'end' => mktime(),
+    'description' => 'Кликов за последний месяц'
+  ),
+);
+
+
 function pagination($page, $elements_on_page_custom = false) {
 	if ($elements_on_page_custom == false) {
 		$elements_on_page_custom = ELEMENTS_ON_PAGE;
