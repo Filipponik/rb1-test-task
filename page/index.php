@@ -103,7 +103,7 @@ else {?>
 
 			<?
 			foreach ($pages as $current_page) {
-				if ($current_page['page'] && !$current_page['is_separator']) {?>
+				if ($current_page['page'] && !isset($current_page['is_separator'])) {?>
 					<a class="<?=($current_page['page'] == $page)?'text-gray-900 border-2 rounded-lg border-gray-200 border-opacity-50':'text-gray-500'?> px-3 py-1 mx-1 text-xl font-medium" href="?path=<?=$data['path']?>&page=<?=$current_page['page']?>"><?=$current_page['page']?></a>
 				<?} else {?>
 					<span class="text-gray-500 px-3 mx-1 text-xl font-medium">...</a>
@@ -117,10 +117,10 @@ var ctx = document.getElementById('today_chart').getContext('2d');
 var today_chart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: <?=json_encode(array_keys($alltime_data_chart))?>,
+        labels: <?=json_encode(array_keys($today_arr))?>,
         datasets: [{
             label: 'Кликов за час (сегодня)',
-            data: <?=json_encode($alltime_data_chart)?>,
+            data: <?=json_encode($today_arr)?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
             ],
@@ -147,10 +147,10 @@ var ctx = document.getElementById('alltime_chart').getContext('2d');
 var alltime_chart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: <?=json_encode(array_keys($today_arr))?>,
+        labels: <?=json_encode(array_keys($alltime_data_chart))?>,
         datasets: [{
             label: 'Кликов за час (за все время)',
-            data: <?=json_encode($today_arr)?>,
+            data: <?=json_encode($alltime_data_chart)?>,
             backgroundColor: [
                 'rgba(0, 0, 255, 0.2)',
             ],

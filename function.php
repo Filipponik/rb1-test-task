@@ -4,13 +4,13 @@ define('DAY', 60*60*24);
 
 $statistic_dates = array(
   'yesterday' => array(
-    'start' => strtotime("yesterday") - DAY,
-    'end' => strtotime("yesterday"),
+    'start' => strtotime("yesterday"),
+    'end' => strtotime("yesterday") + DAY,
     'description' => 'Кликов за вчера'
   ),
   'today' => array(
-    'start' => strtotime("today") - DAY,
-    'end' => strtotime("today"),
+    'start' => strtotime("today"),
+    'end' => strtotime("today") + DAY,
     'description' => 'Кликов за сегодня'
   ),
   'last_7_days' => array(

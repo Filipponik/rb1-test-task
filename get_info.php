@@ -1,4 +1,5 @@
 <?
+header('Content-Type: application/json');
 require_once('config.php');
 
 function is_normal_int($number, $is_timestamp = false) {
@@ -14,7 +15,6 @@ function is_normal_int($number, $is_timestamp = false) {
 		return false;
 	return true;
 }
-
 $data = $_GET;
 /*
 	В $data получаем массив 
@@ -27,7 +27,7 @@ $data = $_GET;
 	]
 */
 if (!is_normal_int($data['x']) || !is_normal_int($data['y']) || !is_normal_int($data['ts'], true)) {
-	exit('Некорректный ввод данных');
+	exit(json_encode(['status' => 'error','error_text' => 'Некорректный ввод данных']));
 }
 else {
 	$data['x'] = intval($data['x']);
@@ -45,7 +45,7 @@ if (empty($site) || !is_array($site) || !$site) {
 		$site_id = R::store($site);
 	}
 	catch (Exception $e) {
-		exit('Ошибка добавления сайта в БД');
+		exit(json_encode(['status' => 'error', 'error_text' => 'Ошибка добавления сайта в БД']));
 	}
 }
 else
@@ -62,7 +62,7 @@ if (empty($sitepage) || !is_array($sitepage) || !$sitepage) {
 		$sitepage_id = R::store($sitepage);
 	}
 	catch (Exception $e) {
-		exit('Ошибка добавления страницы в БД');
+		exit(json_encode(['status' => 'error', 'error_text' => 'Ошибка добавления страницы в БД']));
 	}
 }
 else
@@ -78,9 +78,10 @@ $click->sitepage_id = $sitepage_id;
 
 try {
 	R::store($click);
+	exit(json_encode(['status' => 'success']));
 }
 catch (Exception $e) {
-	exit('Ошибка добавления нажатия в БД');
+	exit(json_encode(['status' => 'error', 'error_text' => 'Ошибка добавления нажатия в БД']));
 }
 
 ?>
